@@ -19,9 +19,11 @@ app.use(cookieParser());
 
 
 import healthcheckRouter from './routes/healthcheckroutes.js'
+import { postRouter } from './routes/postRoutes.js';
 //Healthcheck routes
 app.use("/api/v1/healthcheck",healthcheckRouter)
 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/posts',postRouter)
 
 export {app}
