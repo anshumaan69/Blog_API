@@ -1,17 +1,19 @@
 # Blog API
 
-A RESTful API for a blogging platform with user authentication, email verification, and (soon) full CRUD for blog posts.
+A RESTful API for a blogging platform with user authentication, email verification, and full CRUD for blog posts.
 
 ---
 
 ## 🚀 Features
 
-- **User Registration & Login** (with JWT authentication)
+- **User Registration & Login** (JWT authentication, cookie-based)
 - **Email Verification** via OTP
 - **Logout**
 - **Healthcheck Endpoint**
-- **(Coming Soon)**: Create, Read, Update, Delete blog posts (only post owners can edit/delete)
-- **(Planned)**: Tags, search, and pagination
+- **CRUD for Blog Posts**
+  - Create, Read (all/single), Update, Delete
+  - Only the post owner can update or delete their post
+- **Tags** (basic support in post model)
 
 ---
 
@@ -74,20 +76,22 @@ A RESTful API for a blogging platform with user authentication, email verificati
 
 - `GET /api/v1/healthcheck` — Check if API is running
 
-### Posts (Coming Soon)
+### Posts
 
 - `POST /api/v1/posts` — Create a post (requires login)
 - `GET /api/v1/posts` — List all posts
 - `GET /api/v1/posts/:id` — Get a single post
-- `PUT /api/v1/posts/:id` — Update a post (owner only)
-- `DELETE /api/v1/posts/:id` — Delete a post (owner only)
+- `PUT /api/v1/posts/:id` — Update a post (owner only, requires login)
+- `DELETE /api/v1/posts/:id` — Delete a post (owner only, requires login)
 
 ---
 
 ## 🧪 Testing
 
 Use [Postman](https://www.postman.com/) or similar tools to test the endpoints.  
-Make sure to include cookies for protected routes.
+- Register and login to receive the `token` cookie.
+- Use the same tab/session for all requests to keep cookies.
+- Only the post owner can update or delete their post.
 
 ---
 
